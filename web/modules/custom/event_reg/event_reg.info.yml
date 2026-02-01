@@ -1,0 +1,6 @@
+name: 'Event Registration'
+type: module
+description: 'Custom Drupal 10 module for event registration with admin configuration, email notifications, and CSV export.'
+core_version_requirement: ^10 || ^11
+package: Custom
+version: 1.0
