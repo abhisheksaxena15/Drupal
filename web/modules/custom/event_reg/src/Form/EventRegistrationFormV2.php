@@ -227,10 +227,37 @@ public function updateEventNames(array &$form, FormStateInterface $form_state) {
    * {@inheritdoc}
    */
  public function submitForm(array &$form, FormStateInterface $form_state): void {
+
+  // Collect form values.
+  $full_name = $form_state->getValue('full_name');
+  $email = $form_state->getValue('email');
+  $college = $form_state->getValue('college');
+  $department = $form_state->getValue('department');
+  $event_id = $form_state->getValue('event_name');
+  $created = \Drupal::time()->getRequestTime();
+
+  // Insert registration into database.
+  $this->database->insert('event_reg_registration')
+    ->fields([
+      'full_name' => $full_name,
+      'email' => $email,
+      'college_name' => $college, // matches DB column
+      'department' => $department,
+      'event_id' => $event_id,
+      'created' => $created,
+    ])
+    ->execute();
+
+  // Success message.
   $this->messenger()->addStatus(
-    $this->t('Form submitted successfully (data saving will be added next).')
+    $this->t('You have successfully registered for the event.')
   );
+
+  // Reload page after submit.
+  $form_state->setRedirect('<current>');
 }
+
+
 
 
   /**
@@ -286,5 +313,5 @@ public function validateForm(array &$form, FormStateInterface $form_state): void
 }
 
 
-
 }
+
