@@ -19,7 +19,7 @@ event_reg.event_config:
 event_reg.registration_form:
   path: '/event/register'
   defaults:
-    _form: '\Drupal\event_reg\Form\EventRegistrationForm'
+    _form: '\Drupal\event_reg\Form\EventRegistrationFormV2'
     _title: 'Event Registration'
   requirements:
     _access: 'TRUE'
