@@ -51,11 +51,13 @@ This module provides a complete event registration system with admin configurati
 ### 1. Place the module
 
 ### 2. Enable the module
+
 ```bash
 ddev drush en event_reg -y
 ddev drush cr
 vendor/bin/drush en event_reg -y
-vendor/bin/drush cr
+vendor/bin/drush cr 
+```
 
 ---
 
