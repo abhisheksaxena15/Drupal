@@ -25,10 +25,11 @@ event_reg.settings:
 event_reg.registration_list:
   path: '/admin/event-reg/registrations'
   defaults:
-    _controller: '\Drupal\event_reg\Controller\AdminRegistrationController::list'
+    _form: '\Drupal\event_reg\Form\AdminRegistrationListForm'
     _title: 'Event Registrations'
   requirements:
-    _permission: 'administer event registration'
+    _permission: 'administer site configuration'
+
 
 
 event_reg.registration_form:
@@ -39,7 +40,13 @@ event_reg.registration_form:
   requirements:
     _access: 'TRUE'
 
-
+event_reg.registration_export:
+  path: '/admin/event-reg/registrations/export'
+  defaults:
+    _controller: '\Drupal\event_reg\Controller\AdminRegistrationExportController::export'
+    _title: 'Export Registrations CSV'
+  requirements:
+    _permission: 'administer site configuration'
 
 # This means:
 # URL → /admin/config/event-reg/events
